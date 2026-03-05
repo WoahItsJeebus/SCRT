@@ -4,10 +4,13 @@
 			"Initial release."
 		],
 		"1.0.0.1": [
-			"Populated lists with valid runs."
+			"Populated lists with 50% of valid runs."
 		],
 		"1.0.0.2": [
 			"Added run counts to the status bar."
+		],
+		"1.0.0.3": [
+			"Populated lists with 100% of valid runs."
 		]
 	}
 }
