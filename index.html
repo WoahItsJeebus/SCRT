@@ -315,11 +315,54 @@
 				}
 			}
 
-			async function fetchSpeedrunCover(speedrunUrl){
-				const ab = extractSpeedrunAbbrev(speedrunUrl)
+			function looksLikeImageUrl(url){
+				try{
+					const u = new URL(String(url), location.href)
+					const p = u.pathname.toLowerCase()
+					return (
+						p.endsWith(".png") ||
+						p.endsWith(".jpg") ||
+						p.endsWith(".jpeg") ||
+						p.endsWith(".webp") ||
+						p.endsWith(".gif") ||
+						p.endsWith(".avif") ||
+						p.endsWith(".svg")
+					)
+				}catch{
+					return false
+				}
+			}
+
+			function isSpeedrunDotComUrl(url){
+				try{
+					const u = new URL(String(url), location.href)
+					// speedrun.com and www.speedrun.com
+					return u.hostname === "speedrun.com" || u.hostname === "www.speedrun.com"
+				}catch{
+					return false
+				}
+			}
+
+			async function fetchSpeedrunCover(coverSource){
+				// coverSource can be:
+				//  - speedrun.com game page (https://www.speedrun.com/dishonored)
+				//  - direct image url (https://.../cover.png)
+				//  - empty/null
+
+				if (!coverSource) return null
+				const src = String(coverSource).trim()
+				if (!src) return null
+
+				// Direct image links: just use them.
+				// (No HEAD: CORS often blocks it; the <img> element can still load fine.)
+				if (looksLikeImageUrl(src)) return src
+
+				// Only try the API if it’s actually a speedrun.com URL
+				if (!isSpeedrunDotComUrl(src)) return null
+
+				const ab = extractSpeedrunAbbrev(src)
 				if (!ab) return null
 
-				// Try by abbreviation
 				try{
 					const api = `https://www.speedrun.com/api/v1/games?abbreviation=${encodeURIComponent(ab)}`
 					const res = await fetch(api, { headers: { "Accept": "application/json" } })
@@ -327,7 +370,6 @@
 					const j = await res.json()
 					const game = j?.data?.[0]
 					const assets = game?.assets
-					// Prefer larger/taller covers when available
 					return assets?.["cover-large"]?.uri
 						|| assets?.["cover-tall"]?.uri
 						|| assets?.["cover-medium"]?.uri
@@ -419,7 +461,7 @@
 				const wf = model.runs.filter(r => r.world_first === true).length
 				_completedRuns += completed
 				runsPill.textContent = `Runs: ${_completedRuns}`
-				
+
 				right.appendChild(makeTag(`${completed}/${total} completed`))
 				if (wf > 0) right.appendChild(makeTag(`${wf} world first`))
 

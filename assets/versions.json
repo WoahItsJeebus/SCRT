@@ -11,6 +11,9 @@
 		],
 		"1.0.0.3": [
 			"Populated lists with 100% of valid runs."
+		],
+		"1.0.0.4": [
+			"Fixed missing image links for SMB1, Legend of Zelda: BOTW, Turnip Boy Commits Tax Evasion, Sekiro: Shadows Die Twice, and others."
 		]
 	}
 }
