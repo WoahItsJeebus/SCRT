@@ -1,0 +1,42 @@
+[
+	{
+		"game": "Dark Souls III",
+		"speedrun_website": "https://www.speedrun.com/darksouls3"
+	},
+	{
+		"title": "Hitless",
+		"rules": "",
+		"completed": true,
+		"world_first": false
+	},
+	{
+		"title": "SL1",
+		"rules": "",
+		"completed": true,
+		"world_first": false
+	},
+	{
+		"title": "All Main Game Bosses",
+		"rules": "",
+		"completed": true,
+		"world_first": false
+	},
+	{
+		"title": "Pyromancy Only",
+		"rules": "",
+		"completed": true,
+		"world_first": false
+	},
+	{
+		"title": "Damageless",
+		"rules": "",
+		"completed": true,
+		"world_first": false
+	},
+	{
+		"title": "Thief Class (Bandit's Knife Only)",
+		"rules": "",
+		"completed": true,
+		"world_first": false
+	}
+]

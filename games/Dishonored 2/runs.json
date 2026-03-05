@@ -1,0 +1,18 @@
+[
+	{
+		"game": "Dishonored 2",
+		"speedrun_website": "https://www.speedrun.com/dishonored_2"
+	},
+	{
+		"title": "Hitless",
+		"rules": "",
+		"completed": true,
+		"world_first": false
+	},
+	{
+		"title": "Hitless / Damageless (Emily Kaldwin + Corvo Attano)",
+		"rules": "",
+		"completed": true,
+		"world_first": true
+	}
+]

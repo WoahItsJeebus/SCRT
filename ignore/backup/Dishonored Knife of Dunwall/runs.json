@@ -14,17 +14,5 @@
 		"rules": "",
 		"completed": true,
 		"world_first": true
-	},
-	{
-		"title": "Hitless / Damageless / No Upgrades",
-		"rules": "",
-		"completed": true,
-		"world_first": false
-	},
-	{
-		"title": "Hitless / Damageless / Ghost / Clean Hands / No Upgrades",
-		"rules": "",
-		"completed": true,
-		"world_first": false
 	}
 ]

@@ -16,7 +16,7 @@
 		"world_first": false
 	},
 	{
-		"title": "Hitless / Damageless / Clean Hands / Range Only",
+		"title": "Hitless / Damageless / Clean Hands / Range-only",
 		"rules": "",
 		"completed": true,
 		"world_first": true
@@ -32,17 +32,5 @@
 		"rules": "",
 		"completed": true,
 		"world_first": true
-	},
-	{
-		"title": "Hitless / Damageless",
-		"rules": "",
-		"completed": true,
-		"world_first": false
-	},
-	{
-		"title": "Hitless / Damageless / Ghost",
-		"rules": "",
-		"completed": true,
-		"world_first": false
 	}
 ]

@@ -62,29 +62,5 @@
 		"rules": "",
 		"completed": true,
 		"world_first": true
-	},
-	{
-		"title": "Hitless / Damageless",
-		"rules": "",
-		"completed": true,
-		"world_first": false
-	},
-	{
-		"title": "Hitless / Damageless / Ghost",
-		"rules": "",
-		"completed": true,
-		"world_first": false
-	},
-	{
-		"title": "Hitless / Damageless / Knife Only / No Upgrades",
-		"rules": "",
-		"completed": true,
-		"world_first": false
-	},
-	{
-		"title": "NG & NG+ (Two Endings) / Hitless / No Upgrades",
-		"rules": "",
-		"completed": true,
-		"world_first": true
 	}
 ]
