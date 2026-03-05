@@ -1,0 +1,24 @@
+[
+	{
+		"game": "Dishonored",
+		"speedrun_website": "https://www.speedrun.com/dishonored"
+	},
+	{
+		"title": "Any% Hitless",
+		"rules": "",
+		"completed": true,
+		"world_first": false
+	},
+	{
+		"title": "Any% Hitless / Clean Hands / No Upgrades",
+		"rules": "",
+		"completed": true,
+		"world_first": false
+	},
+	{
+		"title": "Hitless / Damageless / Clean Hands / Range-only",
+		"rules": "",
+		"completed": true,
+		"world_first": true
+	}
+]
