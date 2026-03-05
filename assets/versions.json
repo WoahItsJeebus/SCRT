@@ -3,11 +3,11 @@
 		"1.0.0.0": [
 			"Initial release."
 		],
-		"1.0.1.9": [
-			"Updated resonators page to use higher quality icons."
+		"1.0.0.1": [
+			"Populated lists with valid runs."
 		],
-		"1.0.1.10": [
-			"Added all pages to tab bar on each page."
+		"1.0.0.2": [
+			"Added run counts to the status bar."
 		]
 	}
 }

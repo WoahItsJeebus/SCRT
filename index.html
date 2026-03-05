@@ -120,6 +120,7 @@
 					<div class="pill" id="storagePill">Storage: Local</div>
 					<div class="pill" id="tzPill">Local TZ: —</div>
 					<div class="pill" id="gamesPill">Games: —</div>
+					<div class="pill" id="runsPill">Runs: —</div>
 					<div class="pill" id="statusPill">Status: —</div>
 				</div>
 			</div>
@@ -176,6 +177,7 @@
 
 			const gamesRoot = document.getElementById("gamesRoot")
 			const gamesPill = document.getElementById("gamesPill")
+			const runsPill = document.getElementById("runsPill")
 			const statusPill = document.getElementById("statusPill")
 
 			function escapeHtml(s){
@@ -205,6 +207,8 @@
 			// Hard-pin for your project pages site:
 			const GH_OWNER = "woahitsjeebus"
 			const GH_REPO  = "SCRT"
+
+			let _completedRuns = 0
 
 			function detectGitHubRepo(){
 				// Force GitHub mode only when actually on github.io (prevents accidental calls locally)
@@ -360,6 +364,10 @@
 				span.textContent = text
 				return span
 			}
+			
+			function getCompletedRunsCount(runs){
+				return runs.filter(r => r.completed === true).length
+			}
 
 			function renderGameSection(model, coverUrl){
 				const card = document.createElement("div")
@@ -409,7 +417,9 @@
 				const total = model.runs.length
 				const completed = model.runs.filter(r => r.completed === true).length
 				const wf = model.runs.filter(r => r.world_first === true).length
-
+				_completedRuns += completed
+				runsPill.textContent = `Runs: ${_completedRuns}`
+				
 				right.appendChild(makeTag(`${completed}/${total} completed`))
 				if (wf > 0) right.appendChild(makeTag(`${wf} world first`))
 
