@@ -20,5 +20,17 @@
 		"rules": "",
 		"completed": true,
 		"world_first": true
+	},
+	{
+		"title": "Hitless / Damageless / Knife Only",
+		"rules": "",
+		"completed": true,
+		"world_first": false
+	},
+	{
+		"title": "Hitless / Damageless / Devouring Swarm Only",
+		"rules": "",
+		"completed": true,
+		"world_first": true
 	}
 ]
