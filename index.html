@@ -384,7 +384,7 @@
 			// Rendering
 			// runs.json format:
 			// [
-			//   { "game": "...", "speedrun_website": "..." },
+			//   { "game": "...", "image": "..." },
 			//   { "title": "...", "rules": "", "completed": true, "world_first": false },
 			//   ...
 			// ]
@@ -395,7 +395,7 @@
 				const runs = arr.slice(1).filter(x => x && typeof x === "object")
 				return {
 					game: String(meta.game ?? "Unknown Game"),
-					speedrun_website: meta.speedrun_website ? String(meta.speedrun_website) : "",
+					image: meta.image ? String(meta.image) : "",
 					runs
 				}
 			}
@@ -433,18 +433,18 @@
 				const a = document.createElement("a")
 				a.className = "gameTitleLink"
 				a.textContent = model.game
-				if (model.speedrun_website){
-					a.href = model.speedrun_website
+				if (model.image){
+					a.href = model.image
 					a.target = "_blank"
 					a.rel = "noreferrer noopener"
-					a.title = model.speedrun_website
+					a.title = model.image
 				}else{
 					a.href = "javascript:void(0)"
 				}
 
 				const metaLine = document.createElement("div")
 				metaLine.className = "gameMetaLine"
-				metaLine.textContent = model.speedrun_website ? model.speedrun_website : "No speedrun.com link set"
+				metaLine.textContent = model.image ? model.image : "No speedrun.com link set"
 
 				tw.appendChild(a)
 				tw.appendChild(metaLine)
@@ -600,8 +600,8 @@
 						const model = parseRunsFile(arr)
 						if (!model) throw new Error("Invalid runs.json format")
 
-						const coverUrl = model.speedrun_website
-							? await fetchSpeedrunCover(model.speedrun_website)
+						const coverUrl = model.image
+							? await fetchSpeedrunCover(model.image)
 							: null
 
 						gamesRoot.appendChild(renderGameSection(model, coverUrl))
