@@ -14,6 +14,11 @@
 		],
 		"1.0.0.4": [
 			"Fixed missing image links for SMB1, Legend of Zelda: BOTW, Turnip Boy Commits Tax Evasion, Sekiro: Shadows Die Twice, and others."
+		],
+		"1.0.0.5": [
+			"Adjusted backend variable names for better readability.",
+			"Updated URL sub-headers to only display speedrun.com links (if available).",
+			"Added video links for runs (if available)."
 		]
 	}
 }

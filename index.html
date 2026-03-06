@@ -343,6 +343,23 @@
 				}
 			}
 
+			function isVideoLink(url){
+				// Check if the URL looks like a video link (e.g., YouTube, Twitch) based on common patterns.
+				try{
+					const u = new URL(String(url), location.href)
+					const host = u.hostname.toLowerCase()
+					return (
+						host.includes("youtube.com") ||
+						host.includes("youtu.be") ||
+						host.includes("twitch.tv") ||
+						host.includes("vimeo.com") ||
+						host.includes("dailymotion.com")
+					)
+				}catch{
+					return false
+				}
+			}
+
 			async function fetchSpeedrunCover(coverSource){
 				// coverSource can be:
 				//  - speedrun.com game page (https://www.speedrun.com/dishonored)
@@ -433,7 +450,7 @@
 				const a = document.createElement("a")
 				a.className = "gameTitleLink"
 				a.textContent = model.game
-				if (model.image){
+				if (model.image && isSpeedrunDotComUrl(model.image)){
 					a.href = model.image
 					a.target = "_blank"
 					a.rel = "noreferrer noopener"
@@ -444,7 +461,7 @@
 
 				const metaLine = document.createElement("div")
 				metaLine.className = "gameMetaLine"
-				metaLine.textContent = model.image ? model.image : "No speedrun.com link set"
+				metaLine.textContent = model.image && isSpeedrunDotComUrl(model.image) ? model.image : ""
 
 				tw.appendChild(a)
 				tw.appendChild(metaLine)
@@ -489,6 +506,17 @@
 					const title = document.createElement("div")
 					title.className = "runTitle"
 					title.textContent = String(r.title ?? "Untitled")
+					if (r.video && isVideoLink(r.video)){
+						const a = document.createElement("a")
+						a.href = r.video
+						a.target = "_blank"
+						a.rel = "noreferrer noopener"
+						a.title = r.video
+						a.appendChild(title)
+						tdTitle.appendChild(a)
+					}else{
+						a.href = "javascript:void(0)"
+					}
 
 					const flags = document.createElement("div")
 					flags.className = "badgeRow"
