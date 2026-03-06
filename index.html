@@ -357,21 +357,20 @@
 
 			async function fetchSpeedrunCover(coverSource){
 				// coverSource can be:
-				//  - speedrun.com game page (https://www.speedrun.com/dishonored)
-				//  - direct image url (https://.../cover.png)
-				//  - empty/null
+				// - speedrun.com game page
+				// - direct image url
+				// - empty/null
 
 				if (!coverSource) return null
 				const src = String(coverSource).trim()
 				if (!src) return null
 
-				// Direct image links: just use them.
-				// (No HEAD: CORS often blocks it; the <img> element can still load fine.)
-				if (looksLikeImageUrl(src)) return src
+				// If it is NOT speedrun.com, assume it is already an image
+				if (!isSpeedrunDotComUrl(src)){
+					return src
+				}
 
-				// Only try the API if it’s actually a speedrun.com URL
-				if (!isSpeedrunDotComUrl(src)) return null
-
+				// Otherwise resolve via speedrun API
 				const ab = extractSpeedrunAbbrev(src)
 				if (!ab) return null
 
@@ -379,9 +378,11 @@
 					const api = `https://www.speedrun.com/api/v1/games?abbreviation=${encodeURIComponent(ab)}`
 					const res = await fetch(api, { headers: { "Accept": "application/json" } })
 					if (!res.ok) return null
+
 					const j = await res.json()
 					const game = j?.data?.[0]
 					const assets = game?.assets
+
 					return assets?.["cover-large"]?.uri
 						|| assets?.["cover-tall"]?.uri
 						|| assets?.["cover-medium"]?.uri

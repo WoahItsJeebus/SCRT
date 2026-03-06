@@ -25,6 +25,9 @@
 		],
 		"1.0.0.6": [
 			"Optimized load time by fetching all run data in parallel, then rendering the UI immediately, and fetching cover images in parallel after the UI appears."
+		],
+		"1.0.0.7": [
+			"Fixed non-speedrun.com links not loading as game icons."
 		]
 	}
 }
