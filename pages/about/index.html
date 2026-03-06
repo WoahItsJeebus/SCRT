@@ -96,10 +96,8 @@
 			  initAppSettings,
 			  startOrbBackgroundFromSettings,
 			  hardReload,
-			  VERSION_PROMISE,
+			  _VERSION
 			} from "../../assets/site.js";
-			
-			const version = await VERSION_PROMISE;
 			
 			// ===== Small helpers =====
 			function escapeHtml(s){
@@ -273,13 +271,13 @@
 			  }
 			
 			  // Prefer current app version, if present
-			  const preferredMajor = findMajorForVersion(VERSIONS_DATA, version) || majors[0];
+			  const preferredMajor = findMajorForVersion(VERSIONS_DATA, _VERSION) || majors[0];
 			  setSelectOptions(majorSel, majors, preferredMajor);
 			
-			  // Build sub-version list (prefer version if it exists in that major)
+			  // Build sub-version list (prefer _VERSION if it exists in that major)
 			  const initialMajor = majorSel.value;
-			  const preferVersion = Object.prototype.hasOwnProperty.call(VERSIONS_DATA[initialMajor] || {}, version)
-			    ? version
+			  const preferVersion = Object.prototype.hasOwnProperty.call(VERSIONS_DATA[initialMajor] || {}, _VERSION)
+			    ? _VERSION
 			    : null;
 			
 			  rebuildVersionSelectForMajor(initialMajor, preferVersion);
@@ -309,7 +307,7 @@
 			initAppSettings();
 			startOrbBackgroundFromSettings({ spawnEveryMs: 1600, sizeMin: 340, sizeMax: 720 });
 			
-			document.getElementById("versionCode").textContent = `v${version}`;
+			document.getElementById("versionCode").textContent = `v${_VERSION}`;
 			document.getElementById("hardRefreshBtn")?.addEventListener("click", hardReload);
 			
 			const platformLinks = [

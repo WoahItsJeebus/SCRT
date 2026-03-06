@@ -2,12 +2,40 @@
    site.js — shared helpers for all pages
    ============================================================ */
    
-export const VERSION_PROMISE = fetch("./assets/versions.json")
-	.then(r => r.json())
-	.then(d => typeof d.current === "string" ? d.current : "unknown")
-	.catch(() => "unknown");
+export let _VERSION = "unknown";
 
-export let _VERSION = await VERSION_PROMISE;
+async function loadVersion() {
+
+	try {
+
+		let url;
+
+		// If running locally (VSCode preview / file://)
+		if (location.protocol === "file:") {
+
+			url = "./assets/versions.json";
+
+		}
+		else {
+			// Resolve relative to the module itself
+			url = new URL("./versions.json", import.meta.url);
+		}
+
+		const res = await fetch(url);
+
+		if (!res.ok) return;
+
+		const data = await res.json();
+
+		if (typeof data.current === "string")
+			_VERSION = data.current;
+
+	}
+	catch {}
+
+}
+
+await loadVersion();
 console.log(`SCRT version: ${_VERSION}`);
 
 /* Orb Handler */

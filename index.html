@@ -54,13 +54,12 @@
 				autoMarkActiveTab,
 				initAppSettings,
 				startOrbBackgroundFromSettings,
-				VERSION_PROMISE
+				_VERSION,
 			} from "./assets/site.js"
 
-			const version = await VERSION_PROMISE;
 			const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "Local"
 			document.getElementById("tzPill").textContent = `Local TZ: ${tz}`
-			document.getElementById("versionCode").textContent = `v${version}`
+			document.getElementById("versionCode").textContent = `v${_VERSION}`
 
 			initAppSettings()
 			startOrbBackgroundFromSettings({

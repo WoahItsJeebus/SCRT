@@ -128,7 +128,7 @@
 			</div>
 			<!-- <div class="cornerRefresh">
 				<button style="background:rgba(15, 21, 32, 0.98);" id="hardRefreshBtn" type="button" title="Refresh">↻</button>
-			</div> -->
+				</div> -->
 			<div class="footer">
 				<code class="inline" id="versionCode">v—</code>
 			</div>
@@ -142,20 +142,18 @@
 		</div>
 		<script type="module">
 			import {
-			  initAppSettings,
-			  loadAppSettings,
-			  saveAppSettings,
-			  applyAppSettings,
-			  getDefaultAppSettings,
-			  exportAppSettingsJson,
-			  importAppSettingsJson,
-			  startOrbBackgroundFromSettings,
-			  autoMarkActiveTab,
-			hardReload
+				initAppSettings,
+				loadAppSettings,
+				saveAppSettings,
+				applyAppSettings,
+				getDefaultAppSettings,
+				exportAppSettingsJson,
+				importAppSettingsJson,
+				startOrbBackgroundFromSettings,
+				autoMarkActiveTab,
+				hardReload,
+				_VERSION
 			} from "../../assets/site.js";
-			
-			import { VERSION_PROMISE } from "../../assets/site.js";
-			const _VERSION = await VERSION_PROMISE;
 			
 			document.getElementById("versionCode").textContent = `v${_VERSION}`;
 			
@@ -166,89 +164,89 @@
 			const saveState = document.getElementById("saveState");
 			
 			const els = {
-			  bg: document.getElementById("bg"),
-			  bgText: document.getElementById("bgText"),
-			  card: document.getElementById("card"),
-			  cardText: document.getElementById("cardText"),
-			  text: document.getElementById("text"),
-			  textText: document.getElementById("textText"),
-			  muted: document.getElementById("muted"),
-			  mutedText: document.getElementById("mutedText"),
-			  good: document.getElementById("good"),
-			  goodText: document.getElementById("goodText"),
-			
-			  resetThemeBtn: document.getElementById("resetThemeBtn"),
-			
-			  orbsEnabled: document.getElementById("orbsEnabled"),
-			  reduceMotion: document.getElementById("reduceMotion"),
-			  maxOrbs: document.getElementById("maxOrbs"),
-			  maxOrbsVal: document.getElementById("maxOrbsVal"),
-			  orbOpacity: document.getElementById("orbOpacity"),
-			  orbOpacityVal: document.getElementById("orbOpacityVal"),
-			  orbC0: document.getElementById("orbC0"),
-			  orbC1: document.getElementById("orbC1"),
-			  orbC2: document.getElementById("orbC2"),
-			
-			  jsonBox: document.getElementById("jsonBox"),
-			  exportBtn: document.getElementById("exportBtn"),
-			  importBtn: document.getElementById("importBtn"),
+				bg: document.getElementById("bg"),
+				bgText: document.getElementById("bgText"),
+				card: document.getElementById("card"),
+				cardText: document.getElementById("cardText"),
+				text: document.getElementById("text"),
+				textText: document.getElementById("textText"),
+				muted: document.getElementById("muted"),
+				mutedText: document.getElementById("mutedText"),
+				good: document.getElementById("good"),
+				goodText: document.getElementById("goodText"),
+				
+				resetThemeBtn: document.getElementById("resetThemeBtn"),
+				
+				orbsEnabled: document.getElementById("orbsEnabled"),
+				reduceMotion: document.getElementById("reduceMotion"),
+				maxOrbs: document.getElementById("maxOrbs"),
+				maxOrbsVal: document.getElementById("maxOrbsVal"),
+				orbOpacity: document.getElementById("orbOpacity"),
+				orbOpacityVal: document.getElementById("orbOpacityVal"),
+				orbC0: document.getElementById("orbC0"),
+				orbC1: document.getElementById("orbC1"),
+				orbC2: document.getElementById("orbC2"),
+				
+				jsonBox: document.getElementById("jsonBox"),
+				exportBtn: document.getElementById("exportBtn"),
+				importBtn: document.getElementById("importBtn"),
 			};
 			
 			function setSavedPill(ok) {
-			  saveState.textContent = ok ? "Saved" : "Not saved";
-			  saveState.style.color = ok ? "var(--good)" : "var(--muted)";
+				saveState.textContent = ok ? "Saved" : "Not saved";
+				saveState.style.color = ok ? "var(--good)" : "var(--muted)";
 			}
 			
 			function syncUiFromSettings(s) {
-			  const tv = s.themeVars;
-			
-			  // Theme color inputs
-			  els.bg.value = tv.bg;
-			  els.bgText.value = tv.bg;
-			
-			  els.card.value = tv.card;
-			  els.cardText.value = tv.card;
-			
-			  els.text.value = tv.text;
-			  els.textText.value = tv.text;
-			
-			  els.muted.value = tv.muted;
-			  els.mutedText.value = tv.muted;
-			
-			  els.good.value = tv.good;
-			  els.goodText.value = tv.good;
-			
-			  // Orbs
-			  els.orbsEnabled.checked = !!s.orbs?.enabled;
-			  els.reduceMotion.checked = !!s.reduceMotion;
-			
-			  const maxOrbs = Number(s.orbs?.maxOrbs ?? 5);
-			  els.maxOrbs.value = String(maxOrbs);
-			  els.maxOrbsVal.textContent = String(maxOrbs);
-			
-			  // opacity: if user saved a number, use it; if object, derive a sensible “max”
-			  const op = s.orbs?.opacity;
-			  let opVal = 0.6;
-			  if (typeof op === "number") opVal = op;
-			  else if (op && typeof op === "object" && typeof op.max === "number") opVal = op.max;
-			  els.orbOpacity.value = String(opVal);
-			  els.orbOpacityVal.textContent = String(opVal);
-			
-			  const cols = Array.isArray(s.orbs?.colors) ? s.orbs.colors : ["#20493f", "#306459", "#2f5e7e"];
-			  els.orbC0.value = cols[0] || "#20493f";
-			  els.orbC1.value = cols[1] || "#306459";
-			  els.orbC2.value = cols[2] || "#2f5e7e";
+				const tv = s.themeVars;
+				
+				// Theme color inputs
+				els.bg.value = tv.bg;
+				els.bgText.value = tv.bg;
+				
+				els.card.value = tv.card;
+				els.cardText.value = tv.card;
+				
+				els.text.value = tv.text;
+				els.textText.value = tv.text;
+				
+				els.muted.value = tv.muted;
+				els.mutedText.value = tv.muted;
+				
+				els.good.value = tv.good;
+				els.goodText.value = tv.good;
+				
+				// Orbs
+				els.orbsEnabled.checked = !!s.orbs?.enabled;
+				els.reduceMotion.checked = !!s.reduceMotion;
+				
+				const maxOrbs = Number(s.orbs?.maxOrbs ?? 5);
+				els.maxOrbs.value = String(maxOrbs);
+				els.maxOrbsVal.textContent = String(maxOrbs);
+				
+				// opacity: if user saved a number, use it; if object, derive a sensible “max”
+				const op = s.orbs?.opacity;
+				let opVal = 0.6;
+				if (typeof op === "number") opVal = op;
+				else if (op && typeof op === "object" && typeof op.max === "number") opVal = op.max;
+				els.orbOpacity.value = String(opVal);
+				els.orbOpacityVal.textContent = String(opVal);
+				
+				const cols = Array.isArray(s.orbs?.colors) ? s.orbs.colors : ["#20493f", "#306459", "#2f5e7e"];
+				els.orbC0.value = cols[0] || "#20493f";
+				els.orbC1.value = cols[1] || "#306459";
+				els.orbC2.value = cols[2] || "#2f5e7e";
 			}
 			
 			function writeThemeVar(s, key, value) {
-			  if (!s.themeVars) s.themeVars = {};
-			  s.themeVars[key] = String(value || "").trim();
+				if (!s.themeVars) s.themeVars = {};
+				s.themeVars[key] = String(value || "").trim();
 			}
 			
 			function commit(s) {
-			  const ok = saveAppSettings(s);
-			  applyAppSettings(s);
-			  setSavedPill(ok);
+				const ok = saveAppSettings(s);
+				applyAppSettings(s);
+				setSavedPill(ok);
 			}
 			
 			let S = loadAppSettings();
@@ -258,11 +256,11 @@
 			
 			// Theme binding helper
 			function bindColorPair(colorEl, textEl, key) {
-			  const onColor = () => {
-			    S = loadAppSettings(); // re-load to avoid stomping other controls
-			    writeThemeVar(S, key, colorEl.value);
-			    textEl.value = colorEl.value;
-			    commit(S);
+				const onColor = () => {
+					S = loadAppSettings(); // re-load to avoid stomping other controls
+					writeThemeVar(S, key, colorEl.value);
+					textEl.value = colorEl.value;
+					commit(S);
 			  };
 			  const onText = () => {
 			    const v = textEl.value.trim();
@@ -358,7 +356,7 @@
 			
 			// If another tab changes settings, resync UI here too
 			window.addEventListener("storage", (ev) => {
-			  if (ev.key !== "JWWT_SETTINGS_v1") return;
+			  if (ev.key !== "SCRT_SETTINGS_v1") return;
 			  S = loadAppSettings();
 			  syncUiFromSettings(S);
 			});
