@@ -219,6 +219,20 @@
 				return s
 			}
 
+			function convertMarkdownLinks(text) {
+				if (!text) return ""
+
+				// Skip if HTML anchors already exist
+				if (/<a\s+href=/i.test(text)) return text
+
+				return text.replace(
+					/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+					(_, label, url) => {
+						return `<a href="${url}" target="_blank" rel="noopener">${label}</a>`
+					}
+				)
+			}
+
 			function renderGameSection(model, coverUrl) {
 				const card = document.createElement("div")
 				card.className = "card"
@@ -300,14 +314,14 @@
 					tdTitle.appendChild(flags)
 					
 					const tdRules = document.createElement("td")
-					tdRules.textContent = r.rules || "—"
+					tdRules.innerHTML = convertMarkdownLinks(r.rules || "—")
 
 					const tdNotes = document.createElement("td")
-					tdNotes.textContent = r.notes || "—"
+					tdNotes.innerHTML = convertMarkdownLinks(r.notes || "—")
 					
-					if (r.rules != "")
+					if (r.rules?.trim())
 						rulesExist = true
-					if (r.notes != "")
+					if (r.notes?.trim())
 						notesExist = true
 					
 					const tdStatus = document.createElement("td")

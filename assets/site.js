@@ -2,13 +2,14 @@
    site.js — shared helpers for all pages
    ============================================================ */
    
-   export const _VERSION = "1.0.0.10a";
-   
-/**
- *
- * Orb Handler
- *
- */
+export const VERSION_PROMISE = fetch("./versions.json")
+	.then(r => r.json())
+	.then(d => typeof d.current === "string" ? d.current : "unknown")
+	.catch(() => "unknown");
+
+export let _VERSION = await VERSION_PROMISE;
+
+/* Orb Handler */
 
 let __orbBgStop = null;
 
@@ -455,7 +456,7 @@ export function hardReload() {
    Settings (localStorage)
    ============================================================ */
 
-export const JWWT_SETTINGS_KEY = "JWWT_SETTINGS_v1";
+export const SCRT_SETTINGS_KEY = "SCRT_SETTINGS_v1";
 
 export function getDefaultAppSettings() {
 	return {
@@ -501,7 +502,7 @@ function _safeParseJson(raw) {
 
 export function loadAppSettings(defaults = getDefaultAppSettings()) {
 	try {
-		const raw = localStorage.getItem(JWWT_SETTINGS_KEY);
+		const raw = localStorage.getItem(SCRT_SETTINGS_KEY);
 		if (!raw) return structuredClone(defaults);
 
 		const parsed = _safeParseJson(raw);
@@ -532,7 +533,7 @@ export function loadAppSettings(defaults = getDefaultAppSettings()) {
 
 export function saveAppSettings(settingsObj) {
 	try {
-		localStorage.setItem(JWWT_SETTINGS_KEY, JSON.stringify(settingsObj || {}));
+		localStorage.setItem(SCRT_SETTINGS_KEY, JSON.stringify(settingsObj || {}));
 		return true;
 	}
 	catch {
@@ -577,7 +578,7 @@ export function initAppSettings(defaults = getDefaultAppSettings()) {
 
 	// Cross-tab/page sync
 	window.addEventListener("storage", (ev) => {
-		if (ev.key !== JWWT_SETTINGS_KEY) return;
+		if (ev.key !== SCRT_SETTINGS_KEY) return;
 		applyAppSettings(loadAppSettings(defaults));
 	});
 
