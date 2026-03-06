@@ -2,12 +2,13 @@
    site.js — shared helpers for all pages
    ============================================================ */
    
-export const VERSION_PROMISE = fetch("./versions.json")
+export const VERSION_PROMISE = fetch("../assets/versions.json")
 	.then(r => r.json())
 	.then(d => typeof d.current === "string" ? d.current : "unknown")
 	.catch(() => "unknown");
 
 export let _VERSION = await VERSION_PROMISE;
+console.log(`SCRT version: ${_VERSION}`);
 
 /* Orb Handler */
 
