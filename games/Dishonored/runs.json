@@ -4,51 +4,66 @@
 		"image": "https://www.speedrun.com/dishonored"
 	},
 	{
-		"title": "Any% Hitless",
-		"video": "",
+		"title": "Hitless",
+		"video": "https://www.twitch.tv/videos/1942302381?collection=iv10IGDOcxaDng",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": false
 	},
 	{
-		"title": "Any% Hitless / Clean Hands / No Upgrades",
-		"video": "",
+		"title": "Any% | Hitless | Clean Hands | No Upgrades",
+		"video": "https://www.youtube.com/watch?v=L-G0TJL1XTo&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=18",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": false
 	},
 	{
-		"title": "Hitless / Damageless / Clean Hands / Range Only",
-		"video": "",
+		"title": "No Hit | No Damage | Knife Only | No Upgrades | No HUD",
+		"video": "https://www.youtube.com/watch?v=ZWkVHBgY_lI&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=38",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": true
 	},
 	{
-		"title": "Hitless / Damageless / Knife Only",
-		"video": "",
-		"rules": "",
-		"completed": true,
-		"world_first": false
-	},
-	{
-		"title": "Hitless / Damageless / Devouring Swarm Only",
-		"video": "",
+		"title": "Hitless | Damageless | Clean Hands | Range Only",
+		"video": "https://www.youtube.com/watch?v=FUXfTCj0yd8&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=54",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": true
 	},
 	{
-		"title": "Hitless / Damageless",
-		"video": "",
+		"title": "Hitless | Damageless | Knife Only",
+		"video": "https://www.twitch.tv/videos/1998402685?collection=iv10IGDOcxaDng",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": false
 	},
 	{
-		"title": "Hitless / Damageless / Ghost",
-		"video": "",
+		"title": "Hitless | Damageless | Devouring Swarm Only",
+		"video": "https://www.youtube.com/watch?v=uMAznUb36m8&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=39",
+		"notes": "",
 		"rules": "",
+		"completed": true,
+		"world_first": true
+	},
+	{
+		"title": "Hitless | Damageless",
+		"video": "https://www.youtube.com/watch?v=TeqbhISulvY&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=23",
+		"notes": "",
+		"rules": "No damage taken from any sources. This includes environmental damage like fire, fall damage, etc.",
+		"completed": true,
+		"world_first": false
+	},
+	{
+		"title": "Hitless | Damageless | Ghost",
+		"video": "https://www.youtube.com/watch?v=0dZyHc8cOh0&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=24",
+		"notes": "Ghost = Undetected",
+		"rules": "No damage taken from any sources. This includes environmental damage like fire, fall damage, etc.",
 		"completed": true,
 		"world_first": false
 	}

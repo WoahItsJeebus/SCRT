@@ -4,16 +4,18 @@
 		"image": "https://www.speedrun.com/celeste"
 	},
 	{
-		"title": "Any%",
-		"video": "",
-		"rules": "",
+		"title": "Hitless | Damageless | any% (2:55)",
+		"video": "https://www.youtube.com/watch?v=F4bBbjXptFs&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=16",
+		"notes": "",
+		"rules": "No damage taken from any sources. This includes environmental damage like fire, fall damage, etc.",
 		"completed": true,
 		"world_first": false
 	},
 	{
-		"title": "100%",
-		"video": "",
-		"rules": "",
+		"title": "Deathless | 100%",
+		"video": "https://www.youtube.com/watch?v=YkXgRgpllZ0&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=15",
+		"notes": "",
+		"rules": "All 18 Strawberries collected in Celeste Classic. No deaths allowed.",
 		"completed": true,
 		"world_first": false
 	}

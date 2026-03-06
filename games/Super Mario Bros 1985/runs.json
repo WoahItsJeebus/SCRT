@@ -4,9 +4,10 @@
 		"image": "https://www.speedrun.com/smb1"
 	},
 	{
-		"title": "Any%",
-		"video": "",
-		"rules": "",
+		"title": "Damageless",
+		"video": "https://www.youtube.com/watch?v=CphiXH4KH0o&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=17",
+		"notes": "",
+		"rules": "No damage taken from any sources.",
 		"completed": true,
 		"world_first": false
 	}

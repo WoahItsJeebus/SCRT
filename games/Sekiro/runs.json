@@ -4,8 +4,9 @@
 		"image": "https://www.speedrun.com/sekiro"
 	},
 	{
-		"title": "Shura Ending",
-		"video": "",
+		"title": "Hitless",
+		"video": "https://www.youtube.com/watch?v=CfKECIQxHuc&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga",
+		"notes": "Shura Ending",
 		"rules": "",
 		"completed": true,
 		"world_first": false

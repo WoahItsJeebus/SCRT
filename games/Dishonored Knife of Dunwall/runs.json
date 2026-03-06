@@ -4,29 +4,33 @@
 		"image": "https://www.speedrun.com/dishonored"
 	},
 	{
-		"title": "Hitless / Damageless / Range Only / No Upgrades",
-		"video": "",
-		"rules": "",
-		"completed": true,
-		"world_first": true
-	},
-	{
-		"title": "Hitless / Damageless / Knife Only / No Upgrades",
-		"video": "",
-		"rules": "",
-		"completed": true,
-		"world_first": true
-	},
-	{
-		"title": "Hitless / Damageless / No Upgrades",
-		"video": "",
+		"title": "Hitless | Damageless | Range Only | No Upgrades",
+		"video": "https://www.youtube.com/watch?v=bBTTnVK8AvQ&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=30",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": false
 	},
 	{
-		"title": "Hitless / Damageless / Ghost / Clean Hands / No Upgrades",
+		"title": "Hitless | Damageless | Knife Only | No Upgrades",
 		"video": "",
+		"notes": "",
+		"rules": "",
+		"completed": true,
+		"world_first": true
+	},
+	{
+		"title": "Hitless | Damageless | No Upgrades",
+		"video": "https://www.youtube.com/watch?v=pXBoges6VAg&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=29",
+		"notes": "",
+		"rules": "",
+		"completed": true,
+		"world_first": false
+	},
+	{
+		"title": "Hitless | Damageless | Ghost | Clean Hands | No Upgrades",
+		"video": "https://www.youtube.com/watch?v=X4N5JocUWBU&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=31",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": false

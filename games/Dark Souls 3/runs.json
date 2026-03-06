@@ -4,44 +4,50 @@
 		"image": "https://www.speedrun.com/darksouls3"
 	},
 	{
-		"title": "Hitless",
-		"video": "",
-		"rules": "",
+		"title": "Hitless | No Magic",
+		"video": "https://www.youtube.com/watch?v=8ddkkTYXzgM&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=3",
+		"notes": "",
+		"rules": "No magic or sorcery allowed.",
 		"completed": true,
 		"world_first": false
 	},
 	{
-		"title": "SL1",
-		"video": "",
-		"rules": "",
+		"title": "Hitless | SL1",
+		"video": "https://www.youtube.com/watch?v=JK8ADiYV004&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=2",
+		"notes": "",
+		"rules": "Soul Level 1, no leveling up allowed.",
 		"completed": true,
 		"world_first": false
 	},
 	{
 		"title": "All Main Game Bosses",
-		"video": "",
+		"video": "https://www.youtube.com/watch?v=0_lx0jtXKI0&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=4",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": false
 	},
 	{
 		"title": "Pyromancy Only",
-		"video": "",
-		"rules": "",
+		"video": "https://www.youtube.com/watch?v=Q4fDPbvarAE&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=9",
+		"notes": "",
+		"rules": "Pyromancy only.",
 		"completed": true,
 		"world_first": false
 	},
 	{
 		"title": "Damageless",
-		"video": "",
-		"rules": "",
+		"video": "https://www.youtube.com/watch?v=pHuLuMe9Gsg&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=11",
+		"notes": "",
+		"rules": "No damage taken from any source. This includes environmental damage like fire, fall damage, etc.",
 		"completed": true,
 		"world_first": false
 	},
 	{
-		"title": "Thief Class (Bandit's Knife Only)",
-		"video": "",
-		"rules": "",
+		"title": "Hitless | Thief Class",
+		"video": "https://www.youtube.com/watch?v=1vEWRHzHzoQ&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=6",
+		"notes": "",
+		"rules": "Bandit's Knife / Thief Starting Gear <i><b>only</b></i>.",
 		"completed": true,
 		"world_first": false
 	}

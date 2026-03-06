@@ -268,11 +268,12 @@
 				const table = document.createElement("table")
 				const thead = document.createElement("thead")
 
-				thead.innerHTML = `<tr><th>Run</th><th>Rules</th><th>Status</th></tr>`
+				thead.innerHTML = `<tr><th>Run</th><th>Rules</th><th>Notes</th><th>Status</th></tr>`
 				table.appendChild(thead)
 
 				const tbody = document.createElement("tbody")
 				const rulesExist = false
+				const notesExist = false
 
 				for (const r of model.runs) {
 					const tr = document.createElement("tr")
@@ -300,15 +301,21 @@
 					
 					const tdRules = document.createElement("td")
 					tdRules.textContent = r.rules || "—"
+
+					const tdNotes = document.createElement("td")
+					tdNotes.textContent = r.notes || "—"
 					
 					if (r.rules != "")
 						rulesExist = true
+					if (r.notes != "")
+						notesExist = true
 					
 					const tdStatus = document.createElement("td")
 					tdStatus.appendChild(makeTag(r.completed ? "Done" : "WIP"))
 					
 					tr.appendChild(tdTitle)
 					tr.appendChild(tdRules)
+					tr.appendChild(tdNotes)
 					tr.appendChild(tdStatus)
 					
 					tbody.appendChild(tr)
@@ -318,6 +325,13 @@
 					thead.querySelector("th:nth-child(2)").style.display = "none"
 					tbody.querySelectorAll("tr").forEach(tr => {
 						tr.querySelector("td:nth-child(2)").style.display = "none"
+					})
+				}
+
+				if (!notesExist) {
+					thead.querySelector("th:nth-child(3)").style.display = "none"
+					tbody.querySelectorAll("tr").forEach(tr => {
+						tr.querySelector("td:nth-child(3)").style.display = "none"
 					})
 				}
 

@@ -4,29 +4,33 @@
 		"image": "https://www.speedrun.com/dishonored"
 	},
 	{
-		"title": "Hitless / Ghost / Clean Hands / No Upgrades / Hands Only",
-		"video": "",
-		"rules": "",
-		"completed": true,
-		"world_first": false
-	},
-	{
-		"title": "Hitless / Damageless / Ghost / Knife Only / No Upgrades",
-		"video": "",
+		"title": "Hitless | Ghost | Clean Hands | No Upgrades | Hands Only",
+		"video": "https://www.youtube.com/watch?v=ZIHs4T60VCM&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=32",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": true
 	},
 	{
-		"title": "Hitless / Damageless / Ghost / Clean Hands / No Upgrades / No Weapons / Hands Only",
-		"video": "",
+		"title": "Hitless | Damageless | Ghost | Knife Only | No Upgrades",
+		"video": "https://www.youtube.com/watch?v=-Jcyl5nHenM&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=34",
+		"notes": "",
+		"rules": "",
+		"completed": true,
+		"world_first": true
+	},
+	{
+		"title": "Hitless | Damageless | Ghost | Clean Hands | No Upgrades | No Weapons | Hands Only",
+		"video": "https://www.youtube.com/watch?v=SXyqNKu4qCA&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=36",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": false
 	},
 	{
-		"title": "Hitless / Damageless / Ghost / Clean Hands / Range Only / No Upgrades",
-		"video": "",
+		"title": "Hitless | Damageless | Ghost | Clean Hands | Range Only | No Upgrades",
+		"video": "https://www.youtube.com/watch?v=oUf7qmKON6U&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=46",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": true

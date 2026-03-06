@@ -5,8 +5,9 @@
 	},
 	{
 		"title": "Hitless / Damageless",
-		"video": "",
-		"rules": "",
+		"video": "https://www.youtube.com/watch?v=056yYiUwk4w&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=49",
+		"notes": "",
+		"rules": "No damage taken from any sources. This includes environmental damage like fire, fall damage, etc.",
 		"completed": true,
 		"world_first": false
 	}

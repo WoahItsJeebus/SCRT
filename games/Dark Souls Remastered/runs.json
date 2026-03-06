@@ -4,8 +4,9 @@
 		"image": "https://www.speedrun.com/darksoulsremastered"
 	},
 	{
-		"title": "Any%",
-		"video": "",
+		"title": "Hitless",
+		"video": "https://www.youtube.com/watch?v=Snrp1g65ooY&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=10",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": false

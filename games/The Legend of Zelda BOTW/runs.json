@@ -4,9 +4,10 @@
 		"image": "https://www.speedrun.com/botw"
 	},
 	{
-		"title": "Hitless / Damageless",
-		"video": "",
-		"rules": "",
+		"title": "Hitless | Damageless",
+		"video": "https://www.youtube.com/watch?v=_wAozObxGGk&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=13",
+		"notes": "",
+		"rules": "No damage taken from any sources. This includes environmental damage like fire, fall damage, etc.",
 		"completed": true,
 		"world_first": false
 	}

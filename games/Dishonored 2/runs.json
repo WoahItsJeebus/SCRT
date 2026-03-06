@@ -4,15 +4,17 @@
 		"image": "https://www.speedrun.com/dishonored_2"
 	},
 	{
-		"title": "Hitless",
-		"video": "",
+		"title": "Hitless | Damageless (Corvo Attano)",
+		"video": "https://www.youtube.com/watch?v=-TmguLQfqV8&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=22",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": false
 	},
 	{
-		"title": "Hitless / Damageless (Emily Kaldwin + Corvo Attano)",
-		"video": "",
+		"title": "Hitless | Damageless (Emily Kaldwin + Corvo Attano)",
+		"video": "https://www.youtube.com/watch?v=cnuMMCzCPWs&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=27",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": true

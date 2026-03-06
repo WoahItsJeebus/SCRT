@@ -4,29 +4,25 @@
 		"image": "https://www.speedrun.com/re2"
 	},
 	{
-		"title": "Hitless / Damageless / No Saves — Hardcore Mode S+ Rank (Leon A Scenario)",
-		"video": "",
+		"title": "Hitless | Damageless | No Saves | Hardcore Mode S+ Rank (Leon A Scenario)",
+		"video": "https://www.youtube.com/watch?v=vFuRPzqvCW8&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=52",
+		"notes": "An old \"invalid\" Leon A scenario run can be found [here](https://www.youtube.com/watch?v=s8Tz1UaPMAo&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=50).",
 		"rules": "",
 		"completed": true,
 		"world_first": false
 	},
 	{
-		"title": "Hitless / Damageless / No Saves — Hardcore Mode S+ Rank (Claire A Scenario)",
-		"video": "",
+		"title": "Hitless | Damageless | No Saves | Hardcore Mode S+ Rank (Claire A Ending)",
+		"video": "https://www.youtube.com/watch?v=6BwODuAahow&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=52",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": false
 	},
 	{
-		"title": "Damageless / No Saves — Hardcore S+ Rank (Claire A Ending)",
+		"title": "Hitless | Damageless | No Saves | Hardcore Mode (Claire B Scenario)",
 		"video": "",
-		"rules": "",
-		"completed": true,
-		"world_first": false
-	},
-	{
-		"title": "Damageless / No Saves — Hardcore (Claire B Ending)",
-		"video": "",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": false

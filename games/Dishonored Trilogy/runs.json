@@ -5,15 +5,17 @@
 	},
 	{
 		"title": "Hitless",
-		"video": "",
+		"video": "https://www.youtube.com/watch?v=KrEgj5MPgHc&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=25",
+		"notes": "",
 		"rules": "",
 		"completed": true,
 		"world_first": false
 	},
 	{
-		"title": "Hitless / Damageless",
-		"video": "",
-		"rules": "",
+		"title": "Damageless",
+		"video": "https://www.youtube.com/watch?v=i9dmoi5R1-k&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=14",
+		"notes": "",
+		"rules": "No damage taken from any sources. This includes environmental damage like fire, fall damage, etc.",
 		"completed": true,
 		"world_first": true
 	}

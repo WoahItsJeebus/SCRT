@@ -5,8 +5,9 @@
 	},
 	{
 		"title": "All Bosses",
-		"video": "",
-		"rules": "",
+		"video": "https://www.youtube.com/watch?v=_0ugPgkMDHE&list=PLfVjbTN4UDNzB7f9IoGgLsLQnERpFkkga&index=8",
+		"notes": "Inspired by [Kazoodle](https://www.twitch.tv/zoodle) and [lilbiz61](https://www.twitch.tv/lilbiz61).",
+		"rules": "All bosses must be defeated.",
 		"completed": true,
 		"world_first": false
 	}
