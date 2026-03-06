@@ -272,8 +272,8 @@
 				table.appendChild(thead)
 
 				const tbody = document.createElement("tbody")
-				const rulesExist = false
-				const notesExist = false
+				let rulesExist = false
+				let notesExist = false
 
 				for (const r of model.runs) {
 					const tr = document.createElement("tr")
