@@ -32,7 +32,7 @@
 			</div>
 
 			<div class="gamesRoot" id="gamesRoot">
-				<div class="card">
+				<div class="card fadeWrap fadeScroll">
 					<div class="head">
 						<div class="title">Loading…</div>
 						<div class="tag">runs.json</div>
@@ -236,7 +236,7 @@
 
 			function renderGameSection(model, coverUrl) {
 				const card = document.createElement("div")
-				card.className = "card"
+				card.className = "card tableScroll"
 				const head = document.createElement("div")
 				head.className = "head"
 				const left = document.createElement("div")
@@ -285,7 +285,7 @@
 
 				thead.innerHTML = `<tr><th>Run</th><th>Rules</th><th>Notes</th><th>Status</th></tr>`
 				table.appendChild(thead)
-
+				
 				const tbody = document.createElement("tbody")
 				let rulesExist = false
 				let notesExist = false
