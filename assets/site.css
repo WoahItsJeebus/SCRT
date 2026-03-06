@@ -1435,7 +1435,7 @@ input[type="range"] {
 }
 
 .gameThumb:hover {
-	transform: translateY(-3px) scale(5);
+	transform: translateY(-3px) scale(1.25);
 }
 
 .gameTitleWrap {
