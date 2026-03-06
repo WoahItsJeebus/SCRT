@@ -198,13 +198,13 @@
 			// Strategy for "load all runs.json files found in ./games"
 			//
 			// Static hosting cannot truly “list directories” from the browser.
-			// So we try, in order:
+			// In order:
 			//   1) GitHub Pages: use GitHub Contents API to list /games
 			//   2) Directory listing servers: fetch "./games/" HTML and scrape links
-			//   3) Fallback manifest: "./games/index.json" (if you add one later)
+			//   3) Fallback manifest: "./games/index.json"
 			// ------------------------------------------------------------
 
-			// Hard-pin for your project pages site:
+			// Hard-pin for github pages site:
 			const GH_OWNER = "woahitsjeebus"
 			const GH_REPO  = "SCRT"
 
@@ -243,8 +243,6 @@
 			}
 
 			async function scrapeDirectoryListingForFolders(){
-				// Works only if your dev server exposes a directory listing for /games/
-				// (GitHub Pages does NOT.)
 				const res = await fetch("./games/", { cache: "no-store" })
 				if (!res.ok) return null
 
@@ -301,9 +299,7 @@
 				return { source: "none", dirs: [] }
 			}
 
-			// ------------------------------------------------------------
-			// Speedrun.com cover fetch (from the URL you store)
-			// ------------------------------------------------------------
+			// Speedrun.com cover fetch
 			function extractSpeedrunAbbrev(speedrunUrl){
 				// expected: https://www.speedrun.com/<abbrev> or https://www.speedrun.com/<abbrev>/...
 				try{
@@ -344,7 +340,6 @@
 			}
 
 			function isVideoLink(url){
-				// Check if the URL looks like a video link (e.g., YouTube, Twitch) based on common patterns.
 				try{
 					const u = new URL(String(url), location.href)
 					const host = u.hostname.toLowerCase()
@@ -576,81 +571,115 @@
 				gamesRoot.appendChild(card)
 			}
 
-			// ------------------------------------------------------------
 			// Main load
-			// ------------------------------------------------------------
 			async function loadAllGames(){
 				statusPill.textContent = "Status: Loading"
 				gamesPill.textContent = "Games: —"
 
 				const { source, dirs } = await listGameFolders()
+
 				gamesPill.textContent = `Games: ${dirs.length}`
 				statusPill.textContent = `Status: ${dirs.length ? "OK" : "None"}`
 
 				if (!dirs.length){
 					renderEmptyState(
 						"No games found.",
-						`I couldn’t enumerate ./games/ automatically (source: ${source}). If you're not on GitHub Pages with a public repo, add a fallback manifest at ./games/index.json (an array of folder names).`
+						`I couldn’t enumerate ./games/ automatically (source: ${source}). If you're not on GitHub Pages with a public repo, add a fallback manifest at ./games/index.json.`
 					)
 					return
 				}
 
 				gamesRoot.innerHTML = ""
 
-				// Stable ordering: alphabetical, case-insensitive
 				dirs.sort((a,b)=>a.localeCompare(b, undefined, { sensitivity:"base" }))
 
-				let okCount = 0
-				let errCount = 0
-
-				for (const folder of dirs){
+				// Fetch all runs.json files in parallel
+				const runFetches = dirs.map(async folder => {
 					try{
 						let runsUrl = null
 
-						// If GitHub source, grab the download_url so pathing never breaks
 						if (source === "github"){
 							runsUrl = await ghGetRunsJsonUrl(folder)
 						}
 
-						// Otherwise just use relative path
 						if (!runsUrl){
 							runsUrl = normUrl(`./games/${encodeURIComponent(folder)}/runs.json`)
 						}
 
 						const res = await fetch(runsUrl, { cache: "no-store" })
 						if (!res.ok) throw new Error(`HTTP ${res.status}`)
-						const arr = await res.json()
 
+						const arr = await res.json()
 						const model = parseRunsFile(arr)
 						if (!model) throw new Error("Invalid runs.json format")
 
-						const coverUrl = model.image
-							? await fetchSpeedrunCover(model.image)
-							: null
+						return { folder, model, error: null }
 
-						gamesRoot.appendChild(renderGameSection(model, coverUrl))
-						okCount++
 					}catch(e){
+						return { folder, model: null, error: e }
+					}
+				})
+
+				const results = await Promise.all(runFetches)
+
+				// Render immediately (no cover fetch yet)
+				let okCount = 0
+				let errCount = 0
+
+				const coverTasks = []
+
+				for (const r of results){
+
+					if (r.error){
 						errCount++
+
 						const card = document.createElement("div")
 						card.className = "card"
 						card.innerHTML = `
 							<div class="head">
-								<div class="title">${escapeHtml(folder)}</div>
+								<div class="title">${escapeHtml(r.folder)}</div>
 								<div class="tag">error</div>
 							</div>
 							<div class="emptyCardBody">
-								Failed to load <code class="inline">games/${escapeHtml(folder)}/runs.json</code><br/>
-								<span style="color: var(--muted);">(${escapeHtml(e?.message || String(e))})</span>
+								Failed to load <code class="inline">games/${escapeHtml(r.folder)}/runs.json</code><br/>
+								<span style="color: var(--muted);">(${escapeHtml(r.error?.message || String(r.error))})</span>
 							</div>
 						`
 						gamesRoot.appendChild(card)
+
+						continue
+					}
+
+					const model = r.model
+
+					const card = renderGameSection(model, null)
+					const img = card.querySelector(".gameThumb")
+
+					gamesRoot.appendChild(card)
+
+					okCount++
+
+					// Queue cover fetch for later
+					if (model.image){
+						coverTasks.push({ model, img })
 					}
 				}
 
 				statusPill.textContent = errCount
 					? `Status: OK (${okCount} ok, ${errCount} failed)`
 					: `Status: OK (${okCount})`
+
+				// Fetch all covers in parallel AFTER UI appears
+				Promise.all(
+					coverTasks.map(async t => {
+						try{
+							const cover = await fetchSpeedrunCover(t.model.image)
+							if (cover){
+								t.img.src = cover
+							}
+						}catch{}
+					})
+				)
 			}
 
 			loadAllGames()
