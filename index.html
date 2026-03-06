@@ -506,14 +506,12 @@
 					const title = document.createElement("div")
 					title.className = "runTitle"
 					title.textContent = String(r.title ?? "Untitled")
-					if (r.video && isVideoLink(r.video)){
-						// If there’s a video link, make the title clickable to it
+					// If there’s a video link, make the title a clickable link to it (opens in new tab)
+					if (isVideoLink(r.video)){
 						title.style.textDecoration = "underline"
 						title.style.cursor = "pointer"
 						title.title = r.video
-						title.onclick = () => {
-							window.open(r.video, "_blank", "noopener,noreferrer")
-						}
+						title.onclick = () => window.open(r.video, "_blank", "noopener")
 					}
 
 					const flags = document.createElement("div")
