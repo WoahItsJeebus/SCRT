@@ -154,7 +154,9 @@
 			hardReload
 			} from "../../assets/site.js";
 			
-			import { _VERSION } from "../../assets/site.js";
+			import { VERSION_PROMISE } from "../../assets/site.js";
+			const _VERSION = await VERSION_PROMISE;
+			
 			document.getElementById("versionCode").textContent = `v${_VERSION}`;
 			
 			initAppSettings();
