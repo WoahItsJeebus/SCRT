@@ -314,10 +314,10 @@
 					tdTitle.appendChild(flags)
 					
 					const tdRules = document.createElement("td")
-					tdRules.innerHTML = convertMarkdownLinks(r.rules || "—")
+					tdRules.innerHTML = convertMarkdownLinks(r.rules || "")
 
 					const tdNotes = document.createElement("td")
-					tdNotes.innerHTML = convertMarkdownLinks(r.notes || "—")
+					tdNotes.innerHTML = convertMarkdownLinks(r.notes || "")
 					
 					if (r.rules?.trim())
 						rulesExist = true
