@@ -231,7 +231,7 @@
 				}
 				const meta = document.createElement("div")
 				meta.className = "gameMetaLine"
-				meta.textContent = model.image || ""
+				meta.textContent = model.image && isSpeedrunDotComUrl(model.image) ? model.image : ""
 
 				tw.appendChild(a)
 				tw.appendChild(meta)
