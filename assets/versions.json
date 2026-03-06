@@ -20,6 +20,9 @@
 			"Updated URL sub-headers to only display speedrun.com links (if available).",
 			"Added video links for runs (if available)."
 		],
+		"1.0.0.5a": [
+			"Fixed video links not being clickable."
+		],
 		"1.0.0.6": [
 			"Optimized load time by fetching all run data in parallel, then rendering the UI immediately, and fetching cover images in parallel after the UI appears."
 		]
