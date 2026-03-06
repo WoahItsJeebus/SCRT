@@ -9,7 +9,7 @@
 		<title>SCRT — Challenge Run Tracker</title>
 		<link rel="icon" href="favicon.ico" sizes="any">
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-		<link rel="stylesheet" href="./assets/site.css">
+		<link rel="stylesheet" href="https://woahitsjeebus.github.io/JUIL/site.css">
 		<style>
 			.gamesRoot {
 				display: grid;
@@ -143,8 +143,18 @@
 				autoMarkActiveTab,
 				initAppSettings,
 				startOrbBackgroundFromSettings,
-				_VERSION
-			} from "./assets/site.js"
+			// } from "./assets/site.js"
+			 } from "https://woahitsjeebus.github.io/JUIL/site.js"
+			
+			// Get version from assets/versions.json
+			let _VERSION = "—"
+			fetch("./assets/versions.json")
+				.then(res => res.json())
+				.then(data => {
+					_VERSION = data.current || "—"
+					document.getElementById("versionCode").textContent = `v${_VERSION}`
+				})
+
 			const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "Local"
 			document.getElementById("tzPill").textContent = `Local TZ: ${tz}`
 			document.getElementById("versionCode").textContent = `v${_VERSION}`
