@@ -11,6 +11,7 @@
 		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 		<link rel="stylesheet" href="./assets/site.css">
 	</head>
+
 	<body>
 		<div class="wrap">
 			<header>
@@ -19,6 +20,7 @@
 					<div class="sub">grouped by game</div>
 				</div>
 			</header>
+
 			<div class="fadeWrap fadeScroll" id="toolbarFade" style="margin-bottom:12px;">
 				<div class="toolbar hScroll" id="toolbarScroll">
 					<div class="pill" id="storagePill">Storage: Local</div>
@@ -28,6 +30,7 @@
 					<div class="pill" id="statusPill">Status: —</div>
 				</div>
 			</div>
+
 			<div class="gamesRoot" id="gamesRoot">
 				<div class="card">
 					<div class="head">
@@ -37,11 +40,14 @@
 					<div class="emptyCardBody"> Fetching game folders and run lists. </div>
 				</div>
 			</div>
+
 			<div class="footer" style="display:flex;justify-content:center;margin-top:14px;"><code class="inline" id="versionCode">v—</code></div>
 		</div>
+
 		<div class="tabsBar" style="width:100%;">
 			<nav class="tabs"><a class="tabBtn active" data-tab="home" href="./"><span class="tabDot"></span>Home</a><a class="tabBtn" data-tab="settings" href="./pages/settings/"><span class="tabDot"></span>Settings</a><a class="tabBtn" data-tab="about" href="./pages/about/"><span class="tabDot"></span>About</a></nav>
 		</div>
+
 		<script type="module">
 			import {
 				attachFadeToScroller,
@@ -50,17 +56,21 @@
 				startOrbBackgroundFromSettings,
 				_VERSION
 			} from "./assets/site.js"
+
 			const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "Local"
 			document.getElementById("tzPill").textContent = `Local TZ: ${tz}`
 			document.getElementById("versionCode").textContent = `v${_VERSION}`
+
 			initAppSettings()
 			startOrbBackgroundFromSettings({
 				spawnEveryMs: 1600,
 				sizeMin: 340,
 				sizeMax: 720
 			})
+			
 			autoMarkActiveTab("home")
 			attachFadeToScroller(document.getElementById("toolbarScroll"), document.getElementById("toolbarFade"))
+
 			const gamesRoot = document.getElementById("gamesRoot")
 			const gamesPill = document.getElementById("gamesPill")
 			const runsPill = document.getElementById("runsPill")
@@ -262,6 +272,7 @@
 				table.appendChild(thead)
 
 				const tbody = document.createElement("tbody")
+				const rulesExist = false
 
 				for (const r of model.runs) {
 					const tr = document.createElement("tr")
@@ -290,6 +301,9 @@
 					const tdRules = document.createElement("td")
 					tdRules.textContent = r.rules || "—"
 					
+					if (r.rules != "")
+						rulesExist = true
+					
 					const tdStatus = document.createElement("td")
 					tdStatus.appendChild(makeTag(r.completed ? "Done" : "WIP"))
 					
@@ -298,6 +312,13 @@
 					tr.appendChild(tdStatus)
 					
 					tbody.appendChild(tr)
+				}
+
+				if (!rulesExist) {
+					thead.querySelector("th:nth-child(2)").style.display = "none"
+					tbody.querySelectorAll("tr").forEach(tr => {
+						tr.querySelector("td:nth-child(2)").style.display = "none"
+					})
 				}
 
 				table.appendChild(tbody)
