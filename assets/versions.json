@@ -28,6 +28,12 @@
 		],
 		"1.0.0.7": [
 			"Fixed non-speedrun.com links not loading as game icons."
+		],
+		"1.0.0.8": [
+			"Pushed a hotfix to help rate limits."
+		],
+		"1.0.0.9": [
+			"Added local caching and extra rate limit protection."
 		]
 	}
 }
