@@ -507,15 +507,13 @@
 					title.className = "runTitle"
 					title.textContent = String(r.title ?? "Untitled")
 					if (r.video && isVideoLink(r.video)){
-						const a = document.createElement("a")
-						a.href = r.video
-						a.target = "_blank"
-						a.rel = "noreferrer noopener"
-						a.title = r.video
-						a.appendChild(title)
-						tdTitle.appendChild(a)
-					}else{
-						a.href = "javascript:void(0)"
+						// If there’s a video link, make the title clickable to it
+						title.style.textDecoration = "underline"
+						title.style.cursor = "pointer"
+						title.title = r.video
+						title.onclick = () => {
+							window.open(r.video, "_blank", "noopener,noreferrer")
+						}
 					}
 
 					const flags = document.createElement("div")
