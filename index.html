@@ -159,6 +159,23 @@
 					return false
 				}
 			}
+
+			function isVideoLink(url){
+				try{
+					const u = new URL(String(url), location.href)
+					const host = u.hostname.toLowerCase()
+					return (
+						host.includes("youtube.com") ||
+						host.includes("youtu.be") ||
+						host.includes("twitch.tv") ||
+						host.includes("vimeo.com") ||
+						host.includes("dailymotion.com")
+					)
+				}catch{
+					return false
+				}
+			}
+
 			async function fetchSpeedrunCover(src) {
 				if (!src) return null
 				if (!isSpeedrunDotComUrl(src)) return src
@@ -215,48 +232,74 @@
 				const meta = document.createElement("div")
 				meta.className = "gameMetaLine"
 				meta.textContent = model.image || ""
+
 				tw.appendChild(a)
 				tw.appendChild(meta)
 				left.appendChild(img)
 				left.appendChild(tw)
+
 				const right = document.createElement("div")
 				right.className = "badgeRow"
+
 				const total = model.runs.length
 				const completed = model.runs.filter(r => r.completed).length
 				const wf = model.runs.filter(r => r.world_first).length
+
 				_completedRuns += completed
+
 				runsPill.textContent = `Runs: ${_completedRuns}`
+
 				right.appendChild(makeTag(`${completed}/${total} completed`))
 				if (wf) right.appendChild(makeTag(`${wf} world first`))
+
 				head.appendChild(left)
 				head.appendChild(right)
+
 				const table = document.createElement("table")
 				const thead = document.createElement("thead")
+
 				thead.innerHTML = `<tr><th>Run</th><th>Rules</th><th>Status</th></tr>`
 				table.appendChild(thead)
+
 				const tbody = document.createElement("tbody")
+
 				for (const r of model.runs) {
 					const tr = document.createElement("tr")
 					const tdTitle = document.createElement("td")
+
 					const title = document.createElement("div")
 					title.className = "runTitle"
-					title.textContent = r.title || "Untitled"
+					title.textContent = String(r.title ?? "Untitled")
+					if (isVideoLink(r.video)){
+						title.style.textDecoration = "underline"
+						title.style.cursor = "pointer"
+						title.title = r.video
+						title.onclick = () => window.open(r.video, "_blank", "noopener")
+					}
+					
 					const flags = document.createElement("div")
 					flags.className = "badgeRow"
 					flags.style.marginTop = "8px"
 					flags.appendChild(makeTag(r.completed ? "Completed" : "Incomplete"))
+					
 					if (r.world_first) flags.appendChild(makeTag("World First"))
+					
 					tdTitle.appendChild(title)
 					tdTitle.appendChild(flags)
+					
 					const tdRules = document.createElement("td")
 					tdRules.textContent = r.rules || "—"
+					
 					const tdStatus = document.createElement("td")
 					tdStatus.appendChild(makeTag(r.completed ? "Done" : "WIP"))
+					
 					tr.appendChild(tdTitle)
 					tr.appendChild(tdRules)
 					tr.appendChild(tdStatus)
+					
 					tbody.appendChild(tr)
 				}
+
 				table.appendChild(tbody)
 				card.appendChild(head)
 				card.appendChild(table)
@@ -264,14 +307,18 @@
 			}
 			async function loadAllGames() {
 				statusPill.textContent = "Status: Loading"
+
 				const {
 					dirs
 				} = await listGameFolders()
+
 				gamesPill.textContent = `Games: ${dirs.length}`
 				gamesRoot.innerHTML = ""
+
 				for (const folder of dirs) {
 					const cacheKey = `scrt_runs_${folder}`
 					let arr = getCached(cacheKey, RUNS_CACHE_TTL)
+
 					if (!arr) {
 						const url = getRawRunsUrl(folder)
 						const res = await fetch(url)
@@ -279,9 +326,11 @@
 						arr = await res.json()
 						setCached(cacheKey, arr)
 					}
+					
 					const model = parseRunsFile(arr)
 					const card = renderGameSection(model, null)
 					gamesRoot.appendChild(card)
+					
 					if (model.image) {
 						const img = card.querySelector(".gameThumb")
 						fetchSpeedrunCover(model.image).then(c => {
