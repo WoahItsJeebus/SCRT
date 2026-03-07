@@ -32,7 +32,7 @@
 			</div>
 
 			<div class="gamesRoot" id="gamesRoot">
-				<div class="card fadeWrap fadeScroll hScroll">
+				<div class="card">
 					<div class="head">
 						<div class="title">Loading…</div>
 						<div class="tag">runs.json</div>
@@ -237,7 +237,7 @@
 				const card = document.createElement("div")
 				card.className = "card"
 				const head = document.createElement("div")
-				head.className = "head tableScroll"
+				head.className = "head"
 				const left = document.createElement("div")
 				left.className = "gameHeadLeft"
 				const img = document.createElement("img")
@@ -350,9 +350,26 @@
 				}
 
 				table.appendChild(tbody)
+
+				// Create fade scroll wrapper structure
+				const fadeId = `fade_${model.game.replace(/[^a-zA-Z0-9]/g, "_")}`
+				const scrollId = `scroll_${model.game.replace(/[^a-zA-Z0-9]/g, "_")}`
+				
+				const fadeWrap = document.createElement("div")
+				fadeWrap.className = "fadeWrap fadeScroll"
+				fadeWrap.id = fadeId
+				
+				const tableScroll = document.createElement("div")
+				tableScroll.className = "tableScroll"
+				tableScroll.id = scrollId
+				
+				tableScroll.appendChild(table)
+				fadeWrap.appendChild(tableScroll)
+				
 				card.appendChild(head)
-				card.appendChild(table)
-				return card
+				card.appendChild(fadeWrap)
+				
+				return { card, scrollId, fadeId }
 			}
 			async function loadAllGames() {
 				statusPill.textContent = "Status: Loading"
@@ -377,8 +394,14 @@
 					}
 					
 					const model = parseRunsFile(arr)
-					const card = renderGameSection(model, null)
+					const { card, scrollId, fadeId } = renderGameSection(model, null)
 					gamesRoot.appendChild(card)
+					
+					// Attach fade scroll effect
+					attachFadeToScroller(
+						document.getElementById(scrollId),
+						document.getElementById(fadeId)
+					)
 					
 					if (model.image) {
 						const img = card.querySelector(".gameThumb")
