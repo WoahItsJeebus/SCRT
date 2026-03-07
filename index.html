@@ -280,13 +280,14 @@
 				head.appendChild(right)
 
 				const table = document.createElement("table")
-				const thead = document.createElement("thead")
+				table.className = "fadeWrap fadeScroll tableScroll"
 
+				const thead = document.createElement("thead")
 				thead.innerHTML = `<tr><th>Run</th><th>Rules</th><th>Notes</th><th>Status</th></tr>`
+
 				table.appendChild(thead)
 				
 				const tbody = document.createElement("tbody")
-				tbody.className = "fadeWrap fadeScroll tableScroll"
 				let rulesExist = false
 				let notesExist = false
 
