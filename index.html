@@ -243,6 +243,8 @@
 				const img = document.createElement("img")
 				img.className = "gameThumb"
 				img.loading = "lazy"
+				img.ontouchstart = () => {}
+				
 				if (coverUrl) img.src = coverUrl
 				const tw = document.createElement("div")
 				tw.className = "gameTitleWrap"
