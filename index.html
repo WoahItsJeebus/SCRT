@@ -235,9 +235,9 @@
 
 			function renderGameSection(model, coverUrl) {
 				const card = document.createElement("div")
-				card.className = "card"
+				card.className = "card fadeWrap fadeScroll"
 				const head = document.createElement("div")
-				head.className = "head"
+				head.className = "head tableScroll"
 				const left = document.createElement("div")
 				left.className = "gameHeadLeft"
 				const img = document.createElement("img")
@@ -280,8 +280,6 @@
 				head.appendChild(right)
 
 				const table = document.createElement("table")
-				table.className = "fadeWrap fadeScroll tableScroll"
-
 				const thead = document.createElement("thead")
 				thead.innerHTML = `<tr><th>Run</th><th>Rules</th><th>Notes</th><th>Status</th></tr>`
 
