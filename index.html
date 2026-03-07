@@ -31,7 +31,7 @@
 				</div>
 			</div>
 
-			<div class="gamesRoot" id="gamesRoot">
+			<div class="gamesRoot fadeWrap fadeScroll" id="gamesRoot">
 				<div class="card">
 					<div class="head">
 						<div class="title">Loading…</div>
@@ -235,7 +235,7 @@
 
 			function renderGameSection(model, coverUrl) {
 				const card = document.createElement("div")
-				card.className = "card fadeWrap fadeScroll"
+				card.className = "card"
 				const head = document.createElement("div")
 				head.className = "head tableScroll"
 				const left = document.createElement("div")
